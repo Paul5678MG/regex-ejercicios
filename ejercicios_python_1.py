@@ -126,4 +126,4 @@ def extraer_vulnerabilidades(ruta):
             file.write(f"Codigos unicos: {codigos_unicos}")
     return f"Extracción exitosa✅"
 
-extraer_vulnerabilidades("ejercicios_repaso_FINAL\\escaneo.txt")
+print(extraer_vulnerabilidades("ejercicios_repaso_FINAL\\escaneo.txt"))
