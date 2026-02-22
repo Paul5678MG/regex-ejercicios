@@ -104,6 +104,8 @@ def verificar_acceso(token_id):
 
 verificar_acceso("TK-96")
 
+
+
 #5)
 import re
 
@@ -127,3 +129,30 @@ def extraer_vulnerabilidades(ruta):
     return f"Extracción exitosa✅"
 
 print(extraer_vulnerabilidades("ejercicios_repaso_FINAL\\escaneo.txt"))
+
+
+
+#6)
+def consolidar_reportes(archivo_destino, *archivos_origen):
+    try:
+        lista_final=list()
+        for log in archivos_origen:
+            with open(log, "r", encoding="UTF-8") as file:
+                text=file.readlines()
+                error_o_critico=[x for x in text if "ERROR" in x or "CRITICO" in x]
+                lista_final.extend(error_o_critico)
+        with open(archivo_destino, "a",encoding="UTF-8") as file:
+            for i,linea in enumerate(lista_final):
+                file.write(f"{i+1}.- {linea}")
+            file.write(f"\nErrores: {len(lista_final)}")
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        print(f"Details: {type(e).__name__}")
+    except Exception as e:
+        print(f"Error: {e}")
+        print(f"Details: {type(e).__name__}")
+    return f"Errores encontrados: {len(lista_final)}"
+
+print(consolidar_reportes("ejercicios_repaso_FINAL\\reporte.txt", "ejercicios_repaso_FINAL\\log1.txt", "ejercicios_repaso_FINAL\\log2.txt", "ejercicios_repaso_FINAL\\log3.txt"))
+
+
