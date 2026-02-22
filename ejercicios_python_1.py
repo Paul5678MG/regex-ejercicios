@@ -156,3 +156,23 @@ def consolidar_reportes(archivo_destino, *archivos_origen):
 print(consolidar_reportes("ejercicios_repaso_FINAL\\reporte.txt", "ejercicios_repaso_FINAL\\log1.txt", "ejercicios_repaso_FINAL\\log2.txt", "ejercicios_repaso_FINAL\\log3.txt"))
 
 
+
+#7)
+import re
+
+def buscar_credenciales_expuestas(ruta):
+    contras_expuestas=[]
+    pattern = r'(password|pwd)\s*=\s*["\'](.*?)["\']'
+    with open(ruta, "r", encoding="UTF-8") as file:
+        text=file.readlines()
+        for line in text:
+            contra_hardcodeada=re.search(pattern,line)
+            if contra_hardcodeada:
+                print("[RIESGO] Credencial expuesta detectada",contra_hardcodeada)
+                print(f"Linea: {line}")
+                contras_expuestas.append(contra_hardcodeada.group(0))
+    return contras_expuestas
+
+
+lista=buscar_credenciales_expuestas("ejercicios_repaso_FINAL\\credenciales.txt")
+print(f"Credenciales Expuestas: {lista}")
