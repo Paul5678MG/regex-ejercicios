@@ -176,3 +176,36 @@ def buscar_credenciales_expuestas(ruta):
 
 lista=buscar_credenciales_expuestas("ejercicios_repaso_FINAL\\credenciales.txt")
 print(f"Credenciales Expuestas: {lista}")
+
+
+
+#8)
+import re
+
+def sanitizar_nombres(*nombres_sucios):
+    pattern= r"[^a-zA-Z\s]"
+    limpios=[re.sub(pattern,"",nombre).title() for nombre in nombres_sucios if len(re.sub(pattern,"",nombre)) >= 3]
+    return limpios
+
+nombres_sucios = ["juan123", "ana!@#", "maría", "pe!p3e", "  "]
+print(sanitizar_nombres(*nombres_sucios))
+
+
+
+#9)
+ips = ["192.168.1.1", "10.0.0.1", "8.8.8.8", "172.16.50.25"]
+
+def verificar_ips(*ips):
+    if ips:
+        for ip in ips:
+            if ip.startswith("192.168."):
+                print("[LOCAL] Acceso permitido")
+            elif ip.startswith("10."):
+                print("[VPN] Acceso seguro")
+            else:
+                print("[EXTERNO] Bloqueado por seguridad")
+    else:
+        return f"No hay IPs para verificar❌"
+    return f"Verificación exitosa✅"
+
+print(verificar_ips(*ips))
