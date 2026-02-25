@@ -209,3 +209,21 @@ def verificar_ips(*ips):
     return f"Verificación exitosa✅"
 
 print(verificar_ips(*ips))
+
+
+
+#10)
+precios = [150, 200, 85, 310, 50]
+
+precios_con_descuento=list(map(lambda x: x*0.85 ,precios))
+precio_mayores_100=list(filter(lambda x: x>100 , precios_con_descuento))
+
+print(precio_mayores_100)
+
+
+
+#11)
+logs = [" error: humedad baja ", " CRITICO: sensor desconectado ", " error: temperatura alta "]
+
+logs_limpios=list(map(lambda x: x.strip().upper() ,logs))
+print(logs_limpios)
