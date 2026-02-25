@@ -227,3 +227,22 @@ logs = [" error: humedad baja ", " CRITICO: sensor desconectado ", " error: temp
 
 logs_limpios=list(map(lambda x: x.strip().upper() ,logs))
 print(logs_limpios)
+
+
+#12)
+ruta="ejercicios_repaso_FINAL\\trafico_red.txt"
+
+try:
+    with open(ruta,"r",encoding="UTF-8") as file:
+        text = file.readlines()
+        lineas_criticas=list(filter(lambda x: "ALERTA" in x or "BLOQUEADO" in x,text))
+        lineas_prefix=list(map(lambda x: "[URGENTE] "+x ,lineas_criticas))
+        with open("ejercicios_repaso_FINAL\\auditoria_final.txt", "w", encoding="UTF-8") as file_2:
+            for i,linea in enumerate(lineas_prefix):
+                file_2.write(f"{i+1}- {linea}")
+except FileNotFoundError as e:
+    print(f"Error: {e}")
+    print(f"Details: {type(e).__name__}")
+except Exception as e:
+    print(f"Error: {e}")
+    print(f"Details: {type(e).__name__}")
