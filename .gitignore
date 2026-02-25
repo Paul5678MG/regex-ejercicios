@@ -1,8 +1,2 @@
 tempCodeRunnerFile.py
-escaneo.txt
-extraccion.txt
-log1.txt
-log2.txt
-log3.txt
-reporte.txt
-credenciales.txt
+*.txt
