@@ -7,3 +7,15 @@ pattern=r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
 ips=re.findall(pattern,text)
 
 print(f'IPs encontradas: {ips}')
+
+
+
+#2)
+import re
+
+logs_text="ID: 101 - ACCESO: paul_admin, ID: 102 - ACCESO: guest_user, ID: 103 - ACCESO: root_sistemas"
+
+pattern = r".+?\-.+?\:\ (\w+)"
+accesos=re.findall(pattern,logs_text,flags=re.IGNORECASE)
+
+print(f"Usuarios detectados: {accesos}")
