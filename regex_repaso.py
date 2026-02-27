@@ -19,3 +19,16 @@ pattern = r".+?\-.+?\:\ (\w+)"
 accesos=re.findall(pattern,logs_text,flags=re.IGNORECASE)
 
 print(f"Usuarios detectados: {accesos}")
+
+
+
+#3)
+import re 
+
+pago_info="El pago de la matrícula es S/ 1200.50 y la cuota del carnet es S/ 15.00."
+
+pattern=r"S/\ (\d+\.\d+)"
+
+resultado=re.sub(pattern,"S/ [OCULTO]",pago_info)
+print(resultado)
+
