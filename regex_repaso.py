@@ -32,3 +32,40 @@ pattern=r"S/\ (\d+\.\d+)"
 resultado=re.sub(pattern,"S/ [OCULTO]",pago_info)
 print(resultado)
 
+
+#4)
+import re
+
+cadena="Visita www.google.com, www.github.io y también www.trujillo-sistemas.edu.pe"
+
+pattern=r"\.([a-zA-Z_-]+?)\."
+
+dominios=re.findall(pattern,cadena)
+print(dominios)
+
+
+#5)
+import re
+
+codigos=["P1234A", "XP1234A", "P1234AB", "P123A"]
+
+pattern=r"^P{1}\d{4}[A-Z]{1}$"
+
+for i in codigos:
+    prueba=re.fullmatch(pattern,i)
+    if prueba:
+        print(f"Codigo valido: {i}")
+    else:
+        print(f"Codigo invalido: {i}")
+    print("----------------------------")
+
+
+#6)
+import re
+
+text_precio="Precio_Unitario: 150.50, Costo: 45.00, Oferta: !!!9.99!!!"
+
+pattern=r"[0-9]{1,}?\.[0-9]{2}?"
+
+precios=re.findall(pattern,text_precio)
+print(precios)
