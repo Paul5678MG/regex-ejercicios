@@ -69,3 +69,23 @@ pattern=r"[0-9]{1,}?\.[0-9]{2}?"
 
 precios=re.findall(pattern,text_precio)
 print(precios)
+
+#FINAL
+import re
+
+datos_mixtos = ["Precio: 10.50", None, "Costo: 5.00", 100]
+
+pattern=r"\d+?\.\d+?"
+lista_encontrados=list()
+
+for i in datos_mixtos:
+    try:
+        encontrado=re.findall(pattern,i)
+        print(f"Encontrado: {encontrado}✅")
+        lista_encontrados.extend(encontrado)
+    except Exception as e:
+        print(f"Error: {e}")
+        print(f"Details: {type(e).__name__}")
+    finally:
+        print("------------------------------")
+print(f'Listado: {lista_encontrados}')
