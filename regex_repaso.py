@@ -89,3 +89,46 @@ for i in datos_mixtos:
     finally:
         print("------------------------------")
 print(f'Listado: {lista_encontrados}')
+
+
+
+
+#Otro ejercicio
+import re 
+
+def funcion(cadena):
+    pila = []
+    pares = {')': '(', ']': '[', '}': '{'}
+
+    for caracter in cadena:
+        if caracter in "([{":
+            pila.append(caracter)
+        elif caracter in ")]}":
+            if not pila or pila[-1] != pares[caracter]:
+                print("Cadena mal cerrada❌")
+                return
+            pila.pop()
+    if not pila: 
+        print("Cadena bien cerrada✅")
+    else: 
+        print("Cadena mal cerrada❌")
+
+funcion("{[()]}")
+funcion("([)]")
+funcion("()[]{}")
+funcion("(12)[45]{34}")
+funcion("{[(10)]}")
+
+
+#Otro ejercicio
+def conteo_letras(cadena):
+    conteo={}
+    for c in cadena:
+        conteo[c]=conteo.get(c,0)+1
+        new_string=""
+        for k,v in conteo.items():
+            key, value = str(k),str(v)
+            new_string+= key+value
+    return new_string
+
+print(conteo_letras("aaabbccccd"))
